@@ -1,7 +1,10 @@
 const asyncWrapper = require("../middleware/async");
 const { createCustomError } = require("../errors/custom-error");
-const Notes = require("../models");
+const Notes = require("../models/userModel");
 
+const home = async(req,res)=>{
+    res.send('respond with a resource');
+}
 const getAllTasks = asyncWrapper(async (req, res) => {
   const tasks = await Notes.find({});
   res.status(200).json({ tasks });
@@ -50,4 +53,5 @@ module.exports = {
   getTask,
   updateTask,
   deleteTask,
+  home
 };
